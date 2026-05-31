@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "description": "A WebView-backed GLB and glTF model viewer for React Native and Expo.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityabhattad/react-native-model-viewer-webview.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adityabhattad/react-native-model-viewer-webview/issues"
+  },
+  "homepage": "https://adityabhattad.github.io/react-native-model-viewer-webview/",
   "engines": {
     "node": ">=20"
   },

@@ -63,6 +63,5 @@ Initial public release of `react-native-model-viewer-webview`.
 - React Native versions below `0.72` are unsupported.
 - Local `.glb` and `.gltf` imports still depend on the consuming app's Metro
   asset configuration.
-- iOS support is expected through WKWebView but should not be claimed as
-  manually device-verified until an iOS device or simulator smoke test is
-  completed.
+- I am yet to test this on iOS. I will mark iOS as verified after I run a
+  WKWebView smoke test on an iOS device or simulator.

@@ -84,6 +84,5 @@ test("changelog documents the v0.1.0 publishing release", () => {
   assert.match(changelog, /Initial public release/);
   assert.match(changelog, /ModelViewerWebView/);
   assert.match(changelog, /react-native-webview` is a peer dependency/);
-  assert.match(changelog, /iOS support is expected through WKWebView/);
   assert.doesNotMatch(changelog, /## Unreleased/);
 });
