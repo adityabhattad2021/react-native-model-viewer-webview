@@ -74,3 +74,16 @@ test("npm package file list includes agent-facing assets", () => {
   assert.ok(packageJson.files.includes("llms.txt"));
   assert.ok(packageJson.files.includes("agent-skills"));
 });
+
+test("changelog documents the v0.1.0 publishing release", () => {
+  const packageJson = JSON.parse(readPackageFile("package.json"));
+  const changelog = readPackageFile("CHANGELOG.md");
+
+  assert.equal(packageJson.version, "0.1.0");
+  assert.match(changelog, /## 0\.1\.0 - 2026-05-31/);
+  assert.match(changelog, /Initial public release/);
+  assert.match(changelog, /ModelViewerWebView/);
+  assert.match(changelog, /react-native-webview` is a peer dependency/);
+  assert.match(changelog, /iOS support is expected through WKWebView/);
+  assert.doesNotMatch(changelog, /## Unreleased/);
+});
