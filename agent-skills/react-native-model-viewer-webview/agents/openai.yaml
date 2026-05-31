@@ -1,0 +1,4 @@
+interface:
+  display_name: "React Native Model Viewer WebView"
+  short_description: "Add simple GLB previews to React Native"
+  default_prompt: "Use $react-native-model-viewer-webview to add a simple GLB preview to my Expo screen."

@@ -1,0 +1,79 @@
+# react-native-model-viewer-webview
+
+> A small React Native and Expo package for rendering simple GLB/glTF previews
+> with Google's `<model-viewer>` web component inside `react-native-webview`.
+
+Use this package when an app needs an inspectable 3D asset preview with orbit
+controls, auto-rotate, and load/error callbacks, but does not need a native 3D
+engine. For native rendering, custom scenes, shaders, physics, or AR, prefer
+Filament, React Three Fiber Native, Three.js, or Expo GLView.
+
+## Essential docs
+
+- [README](./README.md): install, quick start, props, tradeoffs, and
+  pre-publish checklist.
+- [How it works](./docs/HOW_IT_WORKS.md): WebView bridge, source resolution,
+  HTML generation, script loading, and event flow.
+- [Compatibility](./docs/COMPATIBILITY.md): peer ranges, tested versions,
+  platform notes, and limitations.
+- [Agent usage](./docs/AGENT_USAGE.md): how AI agents should consume the
+  packaged `SKILL.md`, `AGENTS.md`, and this file.
+- [Release guide](./docs/RELEASE.md): versioning, CI, npm Trusted Publishing,
+  and maintenance instructions.
+- [Contributing](./CONTRIBUTING.md): scope, checks, testing expectations, and
+  PR checklist.
+- [Security](./SECURITY.md): vulnerability reporting and support policy.
+- [Changelog](./CHANGELOG.md): release history.
+
+## Agent assets
+
+- [Package agent instructions](./AGENTS.md): stable coding-agent guidance for
+  this package.
+- [Portable Agent Skill](./agent-skills/react-native-model-viewer-webview/SKILL.md):
+  installable skill entrypoint for skills-compatible agents.
+- [Skill API reference](./agent-skills/react-native-model-viewer-webview/references/api.md):
+  compact API surface for agents.
+
+## Claude Code
+
+Claude Code can use the portable skill after it is copied or symlinked to one of
+Claude's filesystem skill locations:
+
+- `~/.claude/skills/react-native-model-viewer-webview/SKILL.md`
+- `.claude/skills/react-native-model-viewer-webview/SKILL.md`
+
+Claude Agent SDK users should load user/project setting sources and enable
+`skills="all"` or the specific `react-native-model-viewer-webview` skill.
+
+## Quick install
+
+Expo:
+
+```bash
+npx expo install react-native-model-viewer-webview react-native-webview
+```
+
+Bare React Native:
+
+```bash
+npm install react-native-model-viewer-webview react-native-webview
+```
+
+If the app already has a compatible `react-native-webview`, install only
+`react-native-model-viewer-webview`.
+
+## Minimal usage
+
+```tsx
+import { ModelViewerWebView } from "react-native-model-viewer-webview";
+
+export function Preview() {
+  return (
+    <ModelViewerWebView
+      modelSource="https://example.com/model.glb"
+      style={{ height: 320 }}
+      htmlOptions={{ autoRotate: true, cameraControls: true }}
+    />
+  );
+}
+```
