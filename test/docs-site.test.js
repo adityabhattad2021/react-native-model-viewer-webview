@@ -74,10 +74,10 @@ test("docs site includes SEO and answer-engine metadata", () => {
     html,
     /<title>React Native Model Viewer WebView \| GLB\/glTF previews for Expo<\/title>/,
   );
-  assert.match(html, /<link rel="canonical" href="https:\/\/adityabhattad\.github\.io\/react-native-model-viewer-webview\/" \/>/);
+  assert.match(html, /<link rel="canonical" href="https:\/\/adityabhattad2021\.github\.io\/react-native-model-viewer-webview\/" \/>/);
   assert.match(html, /<meta name="robots" content="index, follow, max-image-preview:large" \/>/);
   assert.match(html, /<meta property="og:title" content="React Native Model Viewer WebView" \/>/);
-  assert.match(html, /<meta property="og:image" content="https:\/\/adityabhattad\.github\.io\/react-native-model-viewer-webview\/og-image\.svg" \/>/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/adityabhattad2021\.github\.io\/react-native-model-viewer-webview\/og-image\.svg" \/>/);
   assert.match(html, /<meta name="twitter:card" content="summary_large_image" \/>/);
   assert.match(html, /<script type="application\/ld\+json">/);
   assert.match(html, /"@type": "SoftwareApplication"/);
@@ -89,9 +89,9 @@ test("docs site includes SEO and answer-engine metadata", () => {
 
   assert.match(robots, /User-agent: \*/);
   assert.match(robots, /Allow: \//);
-  assert.match(robots, /Sitemap: https:\/\/adityabhattad\.github\.io\/react-native-model-viewer-webview\/sitemap\.xml/);
+  assert.match(robots, /Sitemap: https:\/\/adityabhattad2021\.github\.io\/react-native-model-viewer-webview\/sitemap\.xml/);
 
-  assert.match(sitemap, /<loc>https:\/\/adityabhattad\.github\.io\/react-native-model-viewer-webview\/<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/adityabhattad2021\.github\.io\/react-native-model-viewer-webview\/<\/loc>/);
   assert.match(sitemap, /<lastmod>2026-05-31<\/lastmod>/);
 });
 

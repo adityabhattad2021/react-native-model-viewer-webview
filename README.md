@@ -224,7 +224,7 @@ See [`example/App.tsx`](./example/App.tsx) for a minimal Expo screen.
 
 ## More Documentation
 
-- [Public docs site](https://adityabhattad.github.io/react-native-model-viewer-webview/)
+- [Public docs site](https://adityabhattad2021.github.io/react-native-model-viewer-webview/)
 - [How it works](./docs/HOW_IT_WORKS.md)
 - [Compatibility and support policy](./docs/COMPATIBILITY.md)
 - [AI agent usage](./docs/AGENT_USAGE.md)

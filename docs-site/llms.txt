@@ -7,9 +7,9 @@
 
 - [Docs home](./index.html): install, examples, use-case ideas, agent support,
   and limitations.
-- [Package README](https://github.com/adityabhattad/react-native-model-viewer-webview#readme):
+- [Package README](https://github.com/adityabhattad2021/react-native-model-viewer-webview#readme):
   npm package documentation in the repository.
-- [AI agent usage](https://github.com/adityabhattad/react-native-model-viewer-webview/blob/main/docs/AGENT_USAGE.md):
+- [AI agent usage](https://github.com/adityabhattad2021/react-native-model-viewer-webview/blob/main/docs/AGENT_USAGE.md):
   AGENTS.md, llms.txt, Claude Code, and portable Agent Skill notes.
 
 ## Key ideas

@@ -5,12 +5,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adityabhattad/react-native-model-viewer-webview.git"
+    "url": "git+https://github.com/adityabhattad2021/react-native-model-viewer-webview.git"
   },
   "bugs": {
-    "url": "https://github.com/adityabhattad/react-native-model-viewer-webview/issues"
+    "url": "https://github.com/adityabhattad2021/react-native-model-viewer-webview/issues"
   },
-  "homepage": "https://adityabhattad.github.io/react-native-model-viewer-webview/",
+  "homepage": "https://adityabhattad2021.github.io/react-native-model-viewer-webview/",
   "engines": {
     "node": ">=20"
   },
