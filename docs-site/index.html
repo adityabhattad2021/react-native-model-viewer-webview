@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="React Native Model Viewer WebView renders simple GLB and glTF previews in Expo and React Native with react-native-webview and model-viewer."
+    />
+    <meta
+      name="keywords"
+      content="react-native-model-viewer-webview, React Native GLB viewer, Expo GLB viewer, glTF React Native, model-viewer WebView"
+    />
+    <meta name="author" content="react-native-model-viewer-webview contributors" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#D7F85C" />
+    <link rel="canonical" href="https://adityabhattad.github.io/react-native-model-viewer-webview/" />
+    <title>React Native Model Viewer WebView | GLB/glTF previews for Expo</title>
+    <meta property="og:title" content="React Native Model Viewer WebView" />
+    <meta
+      property="og:description"
+      content="A small WebView-backed GLB and glTF model viewer for React Native and Expo apps."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://adityabhattad.github.io/react-native-model-viewer-webview/" />
+    <meta property="og:site_name" content="react-native-model-viewer-webview" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://adityabhattad.github.io/react-native-model-viewer-webview/og-image.svg" />
+    <meta property="og:image:alt" content="React Native Model Viewer WebView package preview" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="React Native Model Viewer WebView" />
+    <meta
+      name="twitter:description"
+      content="Render simple GLB and glTF previews in React Native and Expo with a tiny WebView wrapper."
+    />
+    <meta name="twitter:image" content="https://adityabhattad.github.io/react-native-model-viewer-webview/og-image.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://adityabhattad.github.io/react-native-model-viewer-webview/#website",
+            "url": "https://adityabhattad.github.io/react-native-model-viewer-webview/",
+            "name": "react-native-model-viewer-webview",
+            "description": "Documentation for a WebView-backed GLB and glTF model viewer for React Native and Expo.",
+            "inLanguage": "en"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://adityabhattad.github.io/react-native-model-viewer-webview/#software",
+            "name": "react-native-model-viewer-webview",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Android, iOS",
+            "softwareVersion": "0.1.0",
+            "description": "A React Native component for rendering simple GLB and glTF previews through react-native-webview and Google's model-viewer web component.",
+            "url": "https://adityabhattad.github.io/react-native-model-viewer-webview/",
+            "downloadUrl": "https://www.npmjs.com/package/react-native-model-viewer-webview",
+            "codeRepository": "https://github.com/adityabhattad/react-native-model-viewer-webview",
+            "license": "https://github.com/adityabhattad/react-native-model-viewer-webview/blob/main/LICENSE",
+            "programmingLanguage": ["TypeScript", "JavaScript"],
+            "runtimePlatform": ["React Native", "Expo"],
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "SoftwareSourceCode",
+            "@id": "https://adityabhattad.github.io/react-native-model-viewer-webview/#source",
+            "name": "react-native-model-viewer-webview source",
+            "codeRepository": "https://github.com/adityabhattad/react-native-model-viewer-webview",
+            "programmingLanguage": "TypeScript",
+            "runtimePlatform": "React Native",
+            "license": "https://github.com/adityabhattad/react-native-model-viewer-webview/blob/main/LICENSE"
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://adityabhattad.github.io/react-native-model-viewer-webview/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is react-native-model-viewer-webview?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "react-native-model-viewer-webview is a small React Native and Expo package that renders GLB and glTF model previews inside react-native-webview using Google's model-viewer web component."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I install react-native-model-viewer-webview?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "For Expo apps, run npx expo install react-native-model-viewer-webview react-native-webview. For bare React Native apps, run npm install react-native-model-viewer-webview react-native-webview."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "When should I use this instead of Filament or React Three Fiber Native?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Use this package for simple single-model previews, product cards, marketplace listings, and demos where WebView rendering is acceptable. Use native 3D stacks for shaders, physics, AR, complex scenes, or game-like interaction."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does this package support Claude Code and AI agents?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The package ships AGENTS.md, llms.txt, and a portable SKILL.md folder. Claude Code can use the skill after copying it to a supported .claude skills directory."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"
+    ></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="react-native-model-viewer-webview home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>react-native-model-viewer-webview</span>
+      </a>
+      <nav class="site-nav" aria-label="External links">
+        <a href="https://www.npmjs.com/package/react-native-model-viewer-webview">
+          npm
+        </a>
+        <a href="https://github.com/adityabhattad/react-native-model-viewer-webview">
+          GitHub
+        </a>
+      </nav>
+    </header>
+
+    <div class="docs-shell">
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <nav>
+          <p>Start</p>
+          <a href="#overview">Overview</a>
+          <a href="#answers">Direct answers</a>
+          <a href="#install">Install</a>
+          <a href="#quick-start">Quick start</a>
+
+          <p>Guides</p>
+          <a href="#sources">Model sources</a>
+          <a href="#events">Events and errors</a>
+          <a href="#offline">Offline loading</a>
+          <a href="#use-cases">Use-case ideas</a>
+
+          <p>Reference</p>
+          <a href="#agents">AI agent support</a>
+          <a href="#limitations">Limitations</a>
+          <a href="#publishing-fit">Package fit</a>
+        </nav>
+      </aside>
+
+      <main id="top" class="docs-main">
+        <section id="overview" class="doc-section doc-intro">
+          <p class="eyebrow">Documentation</p>
+          <h1>React Native Model Viewer WebView</h1>
+          <p class="lead">
+            A small React Native and Expo component for rendering GLB and glTF
+            model previews through <code>react-native-webview</code> and
+            Google's <code>&lt;model-viewer&gt;</code> web component.
+          </p>
+
+          <div class="fact-table" aria-label="Package summary">
+            <div>
+              <strong>Package</strong>
+              <span>react-native-model-viewer-webview</span>
+            </div>
+            <div>
+              <strong>Best for</strong>
+              <span>single-model previews, demos, cards, and inspection flows</span>
+            </div>
+            <div>
+              <strong>Peer dependency</strong>
+              <span>react-native-webview</span>
+            </div>
+            <div>
+              <strong>Use instead of native 3D when</strong>
+              <span>a WebView preview is enough for the product experience</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="answers" class="doc-section">
+          <p class="eyebrow">Direct answers</p>
+          <h2>Fast facts for searchers and AI agents</h2>
+          <div class="answer-list">
+            <article>
+              <h3>What is react-native-model-viewer-webview?</h3>
+              <p>
+                It is a React Native and Expo package that renders GLB and
+                glTF previews inside <code>react-native-webview</code> using
+                Google's <code>&lt;model-viewer&gt;</code> web component.
+              </p>
+            </article>
+            <article>
+              <h3>How do I install react-native-model-viewer-webview?</h3>
+              <p>
+                Expo apps should run
+                <code>npx expo install react-native-model-viewer-webview react-native-webview</code>.
+                Bare React Native apps should run
+                <code>npm install react-native-model-viewer-webview react-native-webview</code>.
+              </p>
+            </article>
+            <article>
+              <h3>When should I use it instead of Filament or React Three Fiber Native?</h3>
+              <p>
+                Use it for simple single-model previews where WebView rendering
+                is acceptable. Use native 3D stacks for shaders, physics, AR,
+                complex scenes, or game-like interaction.
+              </p>
+            </article>
+            <article>
+              <h3>Does it support Claude Code and AI agents?</h3>
+              <p>
+                Yes. The package includes <code>AGENTS.md</code>,
+                <code>llms.txt</code>, and a portable <code>SKILL.md</code>
+                folder for Claude Code and other skills-compatible agents.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="install" class="doc-section">
+          <p class="eyebrow">Install</p>
+          <h2>Installation</h2>
+          <p>
+            Expo apps should use Expo CLI so SDK-compatible native package
+            versions can be selected when possible. Bare React Native apps can
+            install the package pair with npm and follow
+            <code>react-native-webview</code> native setup.
+          </p>
+          <pre><code># Expo
+npx expo install react-native-model-viewer-webview react-native-webview
+
+# Bare React Native
+npm install react-native-model-viewer-webview react-native-webview</code></pre>
+        </section>
+
+        <section id="quick-start" class="doc-section">
+          <p class="eyebrow">Usage</p>
+          <h2>Quick start</h2>
+          <p>
+            Pass a remote GLB URL, set a stable height, and enable the
+            <code>&lt;model-viewer&gt;</code> controls you need.
+          </p>
+          <pre><code>import { ModelViewerWebView } from "react-native-model-viewer-webview";
+
+export function Preview() {
+  return (
+    &lt;ModelViewerWebView
+      modelSource="https://example.com/car.glb"
+      style={{ height: 320 }}
+      htmlOptions={{
+        autoRotate: true,
+        cameraControls: true,
+        exposure: 1.05,
+        shadowIntensity: 0.35,
+      }}
+    /&gt;
+  );
+}</code></pre>
+
+          <div class="preview-example" aria-label="Interactive model preview">
+            <div>
+              <h3>Live browser preview</h3>
+              <p>
+                The component generates a small model-viewer document and hosts
+                it inside a React Native WebView. This docs preview uses the
+                same underlying browser component.
+              </p>
+            </div>
+            <model-viewer
+              src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+              camera-controls
+              auto-rotate
+              rotation-per-second="24deg"
+              interaction-prompt="none"
+              shadow-intensity="0.45"
+              exposure="1.05"
+              camera-orbit="35deg 65deg 3m"
+              alt="Interactive sample GLB preview"
+            ></model-viewer>
+          </div>
+        </section>
+
+        <section id="sources" class="doc-section">
+          <p class="eyebrow">Model sources</p>
+          <h2>Remote, local, and Expo Asset sources</h2>
+          <div class="example-stack">
+            <article>
+              <h3>Remote GLB with events</h3>
+              <p>Track loaded/error states for product and inspection flows.</p>
+              <pre><code>&lt;ModelViewerWebView
+  modelSource="https://cdn.example.com/models/suv.glb"
+  onModelLoaded={(status) =&gt; {
+    console.log(status.message);
+  }}
+  onModelError={(status) =&gt; {
+    console.warn(status.type, status.message);
+  }}
+/&gt;</code></pre>
+            </article>
+
+            <article>
+              <h3>Local GLB</h3>
+              <p>Add asset extensions to Metro, then pass the static module.</p>
+              <pre><code>// metro.config.js
+const { getDefaultConfig } = require("expo/metro-config");
+const config = getDefaultConfig(__dirname);
+
+config.resolver.assetExts = [
+  ...config.resolver.assetExts,
+  "glb",
+  "gltf",
+];
+
+module.exports = config;</code></pre>
+              <pre><code>&lt;ModelViewerWebView
+  modelSource={require("./assets/car.glb")}
+  style={{ height: 320 }}
+/&gt;</code></pre>
+            </article>
+
+            <article>
+              <h3>Expo Asset</h3>
+              <p>Download the asset first so <code>localUri</code> is available.</p>
+              <pre><code>import { Asset } from "expo-asset";
+
+const model = Asset.fromModule(require("./assets/model.glb"));
+await model.downloadAsync();
+
+&lt;ModelViewerWebView modelSource={model} /&gt;</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section id="events" class="doc-section">
+          <p class="eyebrow">Runtime state</p>
+          <h2>Events and errors</h2>
+          <p>
+            Use status callbacks for UI state, analytics, retry UX, and
+            instrumentation around model loading.
+          </p>
+          <pre><code>&lt;ModelViewerWebView
+  modelSource={source}
+  onStatus={(status) =&gt; track("model_status", status)}
+  onModelLoaded={() =&gt; setReady(true)}
+  onModelError={(status) =&gt; setError(status.message)}
+/&gt;</code></pre>
+        </section>
+
+        <section id="offline" class="doc-section">
+          <p class="eyebrow">Offline</p>
+          <h2>Offline script loading</h2>
+          <p>
+            Bundle <code>&lt;model-viewer&gt;</code> yourself when the model
+            preview must work without a network request for the script.
+          </p>
+          <pre><code>&lt;ModelViewerWebView
+  modelSource={require("./assets/model.glb")}
+  htmlOptions={{
+    modelViewerScriptUrl: "file:///path/to/model-viewer.min.js",
+  }}
+/&gt;</code></pre>
+        </section>
+
+        <section id="use-cases" class="doc-section">
+          <p class="eyebrow">Use-case ideas</p>
+          <h2>Where this package makes sense</h2>
+          <div class="use-case-grid">
+            <article>
+              <h3>Vehicle inspection</h3>
+              <p>
+                Show a 3D reference model before an inspection, highlight the
+                expected angle, or let inspectors confirm a vehicle variant.
+              </p>
+            </article>
+            <article>
+              <h3>Used-car listings</h3>
+              <p>
+                Add a lightweight 3D preview to marketplace listing cards
+                without adopting a full scene-rendering stack.
+              </p>
+            </article>
+            <article>
+              <h3>Furniture and home decor</h3>
+              <p>
+                Let shoppers inspect a single object, material shape, or
+                product silhouette before moving to checkout.
+              </p>
+            </article>
+            <article>
+              <h3>Spare parts catalogs</h3>
+              <p>
+                Display individual parts or assemblies in technician-facing
+                apps where the rest of the workflow is standard React Native UI.
+              </p>
+            </article>
+            <article>
+              <h3>Education and training</h3>
+              <p>
+                Embed inspectable models in lessons, quizzes, field training
+                checklists, or guided maintenance flows.
+              </p>
+            </article>
+            <article>
+              <h3>Sales demos</h3>
+              <p>
+                Build Expo prototypes that need a credible 3D moment without
+                spending the demo budget on renderer setup.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="agents" class="doc-section">
+          <p class="eyebrow">AI agent support</p>
+          <h2>Agent-friendly by default</h2>
+          <p>
+            The package ships <code>AGENTS.md</code>, <code>llms.txt</code>,
+            and a portable <code>SKILL.md</code> folder. Claude Code can use it
+            after copying the skill to a supported skills directory.
+          </p>
+          <pre><code>mkdir -p ~/.claude/skills
+cp -R node_modules/react-native-model-viewer-webview/agent-skills/react-native-model-viewer-webview ~/.claude/skills/</code></pre>
+        </section>
+
+        <section id="limitations" class="doc-section">
+          <p class="eyebrow">Limitations</p>
+          <h2>Known limitations</h2>
+          <div class="limitation-list">
+            <p>
+              This package renders through WebView, so startup cost and memory
+              use are higher than a plain native view.
+            </p>
+            <p>
+              Rendering follows the platform WebView and the underlying
+              <code>&lt;model-viewer&gt;</code> implementation.
+            </p>
+            <p>
+              Use Filament, React Three Fiber Native, Three.js, or Expo GLView
+              for native GPU rendering, shaders, physics, AR, complex scenes,
+              or game-like interaction.
+            </p>
+          </div>
+        </section>
+
+        <section id="publishing-fit" class="doc-section">
+          <p class="eyebrow">Package fit</p>
+          <h2>Why this package exists</h2>
+          <p>
+            Native 3D renderers are the right answer for complex scenes. This
+            package exists for the narrower case where an app needs a dependable
+            single-model preview, simple controls, and a small React Native API
+            without adopting a renderer as application infrastructure.
+          </p>
+        </section>
+      </main>
+
+      <aside class="toc-panel" aria-label="On this page">
+        <p>On this page</p>
+        <a href="#install">Install</a>
+        <a href="#quick-start">Quick start</a>
+        <a href="#sources">Model sources</a>
+        <a href="#events">Events</a>
+        <a href="#offline">Offline</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#agents">Agents</a>
+        <a href="#limitations">Limitations</a>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <span>MIT licensed.</span>
+      <a href="https://github.com/adityabhattad/react-native-model-viewer-webview">
+        View source on GitHub
+      </a>
+    </footer>
+  </body>
+</html>

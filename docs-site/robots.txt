@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adityabhattad.github.io/react-native-model-viewer-webview/sitemap.xml

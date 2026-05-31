@@ -1,0 +1,19 @@
+# react-native-model-viewer-webview docs
+
+> Public documentation site for `react-native-model-viewer-webview`, a
+> WebView-backed GLB/glTF preview component for React Native and Expo.
+
+## Start here
+
+- [Docs home](./index.html): install, examples, use-case ideas, agent support,
+  and limitations.
+- [Package README](https://github.com/adityabhattad/react-native-model-viewer-webview#readme):
+  npm package documentation in the repository.
+- [AI agent usage](https://github.com/adityabhattad/react-native-model-viewer-webview/blob/main/docs/AGENT_USAGE.md):
+  AGENTS.md, llms.txt, Claude Code, and portable Agent Skill notes.
+
+## Key ideas
+
+Use this package for simple single-model previews. Use Filament, React Three
+Fiber Native, Three.js, or Expo GLView for native rendering, custom scenes,
+shaders, physics, AR, or game-like interaction.
