@@ -1,5 +1,12 @@
-export const DEFAULT_MODEL_VIEWER_SCRIPT_URL =
+import {
+  BUNDLED_MODEL_VIEWER_SCRIPT,
+  BUNDLED_MODEL_VIEWER_VERSION,
+} from "../vendor/model-viewer/runtime";
+
+export const MODEL_VIEWER_CDN_SCRIPT_URL =
   "https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js";
+export const DEFAULT_MODEL_VIEWER_SCRIPT_URL = MODEL_VIEWER_CDN_SCRIPT_URL;
+export { BUNDLED_MODEL_VIEWER_VERSION };
 
 export const MODEL_VIEWER_DOM_READY_EVENT = "dom-ready";
 export const MODEL_VIEWER_LOADED_EVENT = "model-loaded";
@@ -159,8 +166,11 @@ function getModelViewerScriptTag(options: ModelViewerHtmlOptions) {
     return `<script type="module">${escapeScriptContent(options.modelViewerScript)}</script>`;
   }
 
-  const scriptUrl = options.modelViewerScriptUrl ?? DEFAULT_MODEL_VIEWER_SCRIPT_URL;
-  return `<script type="module" src="${escapeHtmlAttribute(scriptUrl)}"></script>`;
+  if (options.modelViewerScriptUrl) {
+    return `<script type="module" src="${escapeHtmlAttribute(options.modelViewerScriptUrl)}"></script>`;
+  }
+
+  return `<script type="module">/* @google/model-viewer ${BUNDLED_MODEL_VIEWER_VERSION} bundled runtime */\n${escapeScriptContent(BUNDLED_MODEL_VIEWER_SCRIPT)}</script>`;
 }
 
 function htmlAttribute(

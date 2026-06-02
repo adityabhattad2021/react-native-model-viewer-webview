@@ -64,10 +64,14 @@ type ModelViewerHtmlOptions = {
 ```
 
 Consumers pass `htmlOptions` without `modelUri`; the component injects it.
+The package inlines bundled `@google/model-viewer` 4.2.0 by default.
+`modelViewerScriptUrl` and `modelViewerScript` override that bundled runtime.
 
 ## Utility Functions
 
 ```ts
+BUNDLED_MODEL_VIEWER_VERSION
+MODEL_VIEWER_CDN_SCRIPT_URL
 buildModelViewerHtml(options)
 parseModelViewerMessage(data)
 isModelViewerErrorStatus(status)

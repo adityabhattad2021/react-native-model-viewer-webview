@@ -77,15 +77,23 @@ to avoid injecting arbitrary CSS into generated HTML.
 
 ## Script Loading
 
-By default, the HTML loads:
+By default, the HTML inlines the vendored runtime:
 
 ```text
-https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js
+@google/model-viewer 4.2.0
 ```
 
-Apps that need offline behavior can provide either:
+This avoids a CDN request at runtime, so a bundled/local model asset can render
+without network access. It also makes each package version deterministic: the
+same npm package version always embeds the same `<model-viewer>` runtime.
 
-- `modelViewerScriptUrl`, such as a `file:` URL to a bundled script
+The vendored runtime is generated into `vendor/model-viewer/runtime.js` from
+`@google/model-viewer`'s `dist/model-viewer.min.js`. Source hashes and license
+metadata are recorded in `vendor/model-viewer/SOURCE.md`.
+
+Apps that want to use a different runtime can provide either:
+
+- `modelViewerScriptUrl`, such as a CDN URL or `file:` URL to another script
 - `modelViewerScript`, an inline module script string
 
 Inline script content escapes closing `</script>` sequences to avoid breaking

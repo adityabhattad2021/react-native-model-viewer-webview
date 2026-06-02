@@ -160,17 +160,27 @@ from Metro's file map.
 
 ## Offline Script Loading
 
-By default, the generated WebView HTML loads `<model-viewer>` from Google's CDN.
-That keeps the package tiny, but it means the viewer needs network access the
-first time the WebView loads.
+By default, the generated WebView HTML inlines a vendored copy of
+`@google/model-viewer` 4.2.0. That means the viewer runtime does not need a CDN
+request, and local `.glb` previews can work offline when the model asset is also
+available locally.
 
-For offline apps, pass your own script URL:
+This makes the npm package larger, but keeps runtime behavior deterministic and
+offline-friendly. The Apache-2.0 license for the bundled runtime is included in
+[`vendor/model-viewer/LICENSE`](./vendor/model-viewer/LICENSE), with a summary in
+[`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md). The exact source package,
+file hash, and generated runtime details are recorded in
+[`vendor/model-viewer/SOURCE.md`](./vendor/model-viewer/SOURCE.md).
+
+If you prefer a custom or CDN-hosted runtime, pass your own script URL:
 
 ```tsx
+import { MODEL_VIEWER_CDN_SCRIPT_URL } from "react-native-model-viewer-webview";
+
 <ModelViewerWebView
-  modelSource={require("./assets/car.glb")}
+  modelSource="https://example.com/car.glb"
   htmlOptions={{
-    modelViewerScriptUrl: "file:///path/to/model-viewer.min.js",
+    modelViewerScriptUrl: MODEL_VIEWER_CDN_SCRIPT_URL,
   }}
 />
 ```
@@ -215,8 +225,8 @@ Useful `htmlOptions`:
 | `exposure` / `shadowIntensity` | Basic visual tuning. |
 | `backgroundColor` / `posterColor` | Controls the WebView and poster background. |
 | `additionalAttributes` | Adds extra `<model-viewer>` attributes. |
-| `modelViewerScriptUrl` | Loads a custom `<model-viewer>` script URL. |
-| `modelViewerScript` | Inlines a custom module script. |
+| `modelViewerScriptUrl` | Overrides the bundled runtime with a custom `<model-viewer>` script URL. |
+| `modelViewerScript` | Overrides the bundled runtime with a custom inline module script. |
 
 ## Example
 

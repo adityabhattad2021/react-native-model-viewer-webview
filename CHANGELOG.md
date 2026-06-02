@@ -5,6 +5,28 @@ All notable changes to this package should be documented here.
 This project uses semantic versioning. Versions below `1.0.0` may still change
 minor APIs when the release notes call it out clearly.
 
+## 0.2.0 - 2026-06-02
+
+### Added
+
+- Bundle `@google/model-viewer` 4.2.0 inside the package so the default WebView
+  runtime no longer needs a CDN request.
+- Add third-party notice and Apache-2.0 license metadata for the vendored
+  `@google/model-viewer` runtime.
+- Export `BUNDLED_MODEL_VIEWER_VERSION` so consumers can inspect the embedded
+  runtime version.
+- Export `MODEL_VIEWER_CDN_SCRIPT_URL` for apps that explicitly opt back into
+  the Google CDN runtime.
+
+### Changed
+
+- Make generated model-viewer HTML offline-first by inlining the bundled
+  runtime by default.
+- Keep `modelViewerScriptUrl` and `modelViewerScript` as explicit overrides for
+  custom CDN, local file, or app-bundled script loading.
+- Keep `DEFAULT_MODEL_VIEWER_SCRIPT_URL` as a compatibility alias for
+  `MODEL_VIEWER_CDN_SCRIPT_URL`.
+
 ## 0.1.0 - 2026-05-31
 
 Initial public release of `react-native-model-viewer-webview`.

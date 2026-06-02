@@ -1,5 +1,11 @@
-const DEFAULT_MODEL_VIEWER_SCRIPT_URL =
+const {
+  BUNDLED_MODEL_VIEWER_SCRIPT,
+  BUNDLED_MODEL_VIEWER_VERSION,
+} = require("../vendor/model-viewer/runtime");
+
+const MODEL_VIEWER_CDN_SCRIPT_URL =
   "https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js";
+const DEFAULT_MODEL_VIEWER_SCRIPT_URL = MODEL_VIEWER_CDN_SCRIPT_URL;
 
 const MODEL_VIEWER_DOM_READY_EVENT = "dom-ready";
 const MODEL_VIEWER_LOADED_EVENT = "model-loaded";
@@ -133,8 +139,11 @@ function getModelViewerScriptTag(options) {
     return `<script type="module">${escapeScriptContent(options.modelViewerScript)}</script>`;
   }
 
-  const scriptUrl = options.modelViewerScriptUrl ?? DEFAULT_MODEL_VIEWER_SCRIPT_URL;
-  return `<script type="module" src="${escapeHtmlAttribute(scriptUrl)}"></script>`;
+  if (options.modelViewerScriptUrl) {
+    return `<script type="module" src="${escapeHtmlAttribute(options.modelViewerScriptUrl)}"></script>`;
+  }
+
+  return `<script type="module">/* @google/model-viewer ${BUNDLED_MODEL_VIEWER_VERSION} bundled runtime */\n${escapeScriptContent(BUNDLED_MODEL_VIEWER_SCRIPT)}</script>`;
 }
 
 function htmlAttribute(name, value) {
@@ -178,6 +187,8 @@ function sanitizeCssColor(value) {
 }
 
 exports.DEFAULT_MODEL_VIEWER_SCRIPT_URL = DEFAULT_MODEL_VIEWER_SCRIPT_URL;
+exports.MODEL_VIEWER_CDN_SCRIPT_URL = MODEL_VIEWER_CDN_SCRIPT_URL;
+exports.BUNDLED_MODEL_VIEWER_VERSION = BUNDLED_MODEL_VIEWER_VERSION;
 exports.MODEL_VIEWER_DOM_READY_EVENT = MODEL_VIEWER_DOM_READY_EVENT;
 exports.MODEL_VIEWER_LOADED_EVENT = MODEL_VIEWER_LOADED_EVENT;
 exports.MODEL_VIEWER_MODEL_ERROR_EVENT = MODEL_VIEWER_MODEL_ERROR_EVENT;

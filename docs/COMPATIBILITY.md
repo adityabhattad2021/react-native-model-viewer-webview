@@ -6,7 +6,7 @@ This package is a WebView bridge. Compatibility depends on:
 - React Native
 - `react-native-webview`
 - the Android System WebView or iOS WKWebView
-- Google's `<model-viewer>` web component
+- the bundled `@google/model-viewer` runtime
 - how the consuming app bundles `.glb` and `.gltf` files
 
 ## Supported Peer Ranges
@@ -30,6 +30,7 @@ Current local integration target:
 - React 19.1
 - React Native 0.81
 - `react-native-webview` 13.15
+- `@google/model-viewer` 4.2.0
 - TypeScript 5.9
 
 Automated checks validate:
@@ -108,5 +109,5 @@ For local development, configure the consuming app's Metro setup to:
   found.
 - Keep dev dependencies pinned to one known-good React Native stack.
 - Use CI and device smoke tests before raising support claims.
-- If `<model-viewer>` changes behavior, update README examples and tests before
-  changing the default CDN URL.
+- If `<model-viewer>` changes behavior, update README examples, vendor metadata,
+  third-party notices, and tests before changing the bundled runtime version.

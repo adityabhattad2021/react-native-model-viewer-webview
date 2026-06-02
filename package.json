@@ -1,6 +1,6 @@
 {
   "name": "react-native-model-viewer-webview",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A WebView-backed GLB and glTF model viewer for React Native and Expo.",
   "license": "MIT",
   "repository": {
@@ -31,18 +31,22 @@
     "dist",
     "example",
     "src",
+    "vendor",
+    "scripts",
     "CHANGELOG.md",
     "CONTRIBUTING.md",
     "LICENSE",
     "llms.txt",
     "README.md",
     "SECURITY.md",
+    "THIRD_PARTY_NOTICES.md",
     "docs",
     "tsconfig.json"
   ],
   "sideEffects": false,
   "scripts": {
     "check": "npm test && npm run typecheck && npm run pack:dry-run",
+    "generate:model-viewer-runtime": "node scripts/generate-model-viewer-runtime.js",
     "test": "node --test test/*.test.js",
     "pack:dry-run": "npm pack --dry-run",
     "typecheck": "tsc --noEmit"

@@ -369,13 +369,16 @@ await model.downloadAsync();
           <p class="eyebrow">Offline</p>
           <h2>Offline script loading</h2>
           <p>
-            Bundle <code>&lt;model-viewer&gt;</code> yourself when the model
-            preview must work without a network request for the script.
+            The package now inlines a bundled <code>@google/model-viewer</code>
+            runtime by default, so local model previews do not need a CDN
+            request. Override the script only when you want a different runtime.
           </p>
-          <pre><code>&lt;ModelViewerWebView
-  modelSource={require("./assets/model.glb")}
+          <pre><code>import { MODEL_VIEWER_CDN_SCRIPT_URL } from "react-native-model-viewer-webview";
+
+&lt;ModelViewerWebView
+  modelSource="https://example.com/model.glb"
   htmlOptions={{
-    modelViewerScriptUrl: "file:///path/to/model-viewer.min.js",
+    modelViewerScriptUrl: MODEL_VIEWER_CDN_SCRIPT_URL,
   }}
 /&gt;</code></pre>
         </section>

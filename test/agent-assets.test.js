@@ -14,6 +14,10 @@ function readPackageFile(...parts) {
   return fs.readFileSync(path.join(packageRoot, ...parts), "utf8");
 }
 
+function packageFileExists(...parts) {
+  return fs.existsSync(path.join(packageRoot, ...parts));
+}
+
 function readSkillFile(...parts) {
   return fs.readFileSync(path.join(skillRoot, ...parts), "utf8");
 }
@@ -73,13 +77,37 @@ test("npm package file list includes agent-facing assets", () => {
   assert.ok(packageJson.files.includes("AGENTS.md"));
   assert.ok(packageJson.files.includes("llms.txt"));
   assert.ok(packageJson.files.includes("agent-skills"));
+  assert.ok(packageJson.files.includes("vendor"));
+  assert.ok(packageJson.files.includes("scripts"));
+  assert.ok(packageJson.files.includes("THIRD_PARTY_NOTICES.md"));
 });
 
-test("changelog documents the v0.1.0 publishing release", () => {
+test("vendored model-viewer runtime ships one generated copy with provenance", () => {
+  const version = readPackageFile("vendor", "model-viewer", "VERSION");
+  const license = readPackageFile("vendor", "model-viewer", "LICENSE");
+  const source = readPackageFile("vendor", "model-viewer", "SOURCE.md");
+
+  assert.ok(packageFileExists("vendor", "model-viewer", "runtime.js"));
+  assert.ok(packageFileExists("vendor", "model-viewer", "runtime.d.ts"));
+  assert.ok(packageFileExists("scripts", "generate-model-viewer-runtime.js"));
+  assert.equal(packageFileExists("vendor", "model-viewer", "model-viewer.min.js"), false);
+  assert.equal(packageFileExists("src", "model-viewer-runtime.ts"), false);
+  assert.equal(packageFileExists("dist", "model-viewer-runtime.js"), false);
+  assert.match(version, /^@google\/model-viewer 4\.2\.0$/m);
+  assert.match(license, /Apache License/);
+  assert.match(source, /@google\/model-viewer@4\.2\.0/);
+  assert.match(source, /dist\/model-viewer\.min\.js/);
+  assert.match(source, /SHA-256/);
+});
+
+test("changelog documents the current publishing release", () => {
   const packageJson = JSON.parse(readPackageFile("package.json"));
   const changelog = readPackageFile("CHANGELOG.md");
 
-  assert.equal(packageJson.version, "0.1.0");
+  assert.equal(packageJson.version, "0.2.0");
+  assert.match(changelog, /## 0\.2\.0 - 2026-06-02/);
+  assert.match(changelog, /offline-first/);
+  assert.match(changelog, /@google\/model-viewer` 4\.2\.0/);
   assert.match(changelog, /## 0\.1\.0 - 2026-05-31/);
   assert.match(changelog, /Initial public release/);
   assert.match(changelog, /ModelViewerWebView/);

@@ -1,4 +1,6 @@
+export declare const MODEL_VIEWER_CDN_SCRIPT_URL = "https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js";
 export declare const DEFAULT_MODEL_VIEWER_SCRIPT_URL = "https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js";
+export { BUNDLED_MODEL_VIEWER_VERSION } from "../vendor/model-viewer/runtime";
 export declare const MODEL_VIEWER_DOM_READY_EVENT = "dom-ready";
 export declare const MODEL_VIEWER_LOADED_EVENT = "model-loaded";
 export declare const MODEL_VIEWER_MODEL_ERROR_EVENT = "model-error";

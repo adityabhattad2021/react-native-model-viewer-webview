@@ -96,7 +96,9 @@ await model.downloadAsync();
 
 ## Offline Apps
 
-By default, `<model-viewer>` loads from Google's CDN. For offline apps, use:
+By default, the package inlines its bundled `@google/model-viewer` runtime, so
+local model assets can render without a CDN request. If the user wants to provide
+a custom runtime, use:
 
 ```tsx
 <ModelViewerWebView
