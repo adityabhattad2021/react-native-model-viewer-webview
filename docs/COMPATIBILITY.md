@@ -40,6 +40,22 @@ Automated checks validate:
 - package tarball contents with `npm pack --dry-run`
 - integration with this repository's Expo app through TypeScript and Expo lint
 
+## Device Smoke Tests
+
+These results are manual smoke tests, not a blanket support matrix.
+
+| Date | Platform | App runtime | Model source | Result |
+| --- | --- | --- | --- | --- |
+| 2026-06-30 | Android 16 physical device | Expo Go, Expo SDK 56 tester app | Remote GLB URL | Verified |
+| 2026-06-30 | Android 16 physical device | Expo Go, Expo SDK 56 tester app | Local Khronos `Box.glb` as `data:model/gltf-binary;base64,...` | Verified |
+| 2026-06-30 | Android 16 physical device | Expo Go, Expo SDK 56 tester app | Local Khronos `Box.glb` as direct `file:` URI | Not reliable in this smoke test |
+| Not yet tested | iOS WKWebView | Not yet tested | Any model source | Not yet verified |
+
+The local Android test used `expo-asset` to resolve a bundled `.glb`, then
+`expo-file-system` to read the local file as base64 before passing a
+`data:model/gltf-binary;base64,...` URI to `ModelViewerWebView`. This avoids the
+Android WebView file-access path that failed in the direct `file:` smoke test.
+
 ## Not Guaranteed
 
 The package does not claim blanket support for all React Native versions.
@@ -50,6 +66,9 @@ Explicit limitations:
 - WebView bugs in specific Android System WebView or iOS versions may affect
   rendering.
 - Local `.glb` bundling depends on the consuming app's Metro config.
+- On Android Expo Go, direct WebView loading from a local `file:` GLB URI was
+  not reliable in the 2026-06-30 smoke test. Prefer a GLB data URI for local
+  Expo assets unless your target app/device matrix proves direct file loading.
 - Device rendering is not fully proven by unit tests.
 - AR behavior is not a supported package guarantee.
 - Long lists of many WebViews may have memory/performance problems.

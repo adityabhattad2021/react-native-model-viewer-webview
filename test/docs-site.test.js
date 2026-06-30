@@ -19,6 +19,11 @@ test("docs site contains complete package guidance", () => {
   assert.match(html, /Remote GLB/);
   assert.match(html, /Local GLB/);
   assert.match(html, /Expo Asset/);
+  assert.match(html, /Expo local GLB as data URI/);
+  assert.match(html, /Verified smoke tests/);
+  assert.match(html, /Android 16 physical device/);
+  assert.match(html, /data:model\/gltf-binary;base64/);
+  assert.match(html, /android-expo-go-local-glb-cropped\.png/);
   assert.match(html, /Offline script loading/);
   assert.match(html, /Events and errors/);
   assert.match(html, /AI agent support/);
@@ -92,7 +97,7 @@ test("docs site includes SEO and answer-engine metadata", () => {
   assert.match(robots, /Sitemap: https:\/\/adityabhattad2021\.github\.io\/react-native-model-viewer-webview\/sitemap\.xml/);
 
   assert.match(sitemap, /<loc>https:\/\/adityabhattad2021\.github\.io\/react-native-model-viewer-webview\/<\/loc>/);
-  assert.match(sitemap, /<lastmod>2026-05-31<\/lastmod>/);
+  assert.match(sitemap, /<lastmod>2026-06-30<\/lastmod>/);
 });
 
 test("github pages workflow deploys the docs site with official pages actions", () => {

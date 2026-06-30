@@ -122,6 +122,31 @@ await carModel.downloadAsync();
 `localUri` is preferred over `uri` when both exist. `modelUri` is still accepted
 as a string-only compatibility prop.
 
+For Android Expo Go, direct `file:` loading from WebView can be unreliable. The
+verified local-asset path is to read the Expo asset as base64 and pass a GLB
+data URI:
+
+```tsx
+import { Asset } from "expo-asset";
+import * as FileSystem from "expo-file-system/legacy";
+import { ModelViewerWebView } from "react-native-model-viewer-webview";
+
+const model = Asset.fromModule(require("./assets/model.glb"));
+await model.downloadAsync();
+
+const localUri = model.localUri ?? model.uri;
+const base64 = await FileSystem.readAsStringAsync(localUri, {
+  encoding: FileSystem.EncodingType.Base64,
+});
+const modelSource = `data:model/gltf-binary;base64,${base64}`;
+
+<ModelViewerWebView modelSource={modelSource} style={{ height: 320 }} />;
+```
+
+This data-URI path was smoke-tested on Android Expo Go with a local Khronos
+`Box.glb` asset. Use `file:` URIs only after testing them on your target
+WebView/device matrix.
+
 ## Metro Setup For Local GLB Files
 
 If your app imports `.glb` files, add `glb` to Metro's asset extensions.
@@ -195,6 +220,15 @@ Or pass an inline module script if your build already bundles the source:
   }}
 />
 ```
+
+## Verified Smoke Tests
+
+| Platform | App runtime | Model source | Result |
+| --- | --- | --- | --- |
+| Android 16 physical device | Expo Go, Expo SDK 56 tester app | Remote GLB URL | Verified |
+| Android 16 physical device | Expo Go, Expo SDK 56 tester app | Local Khronos `Box.glb` as `data:model/gltf-binary;base64,...` | Verified |
+| Android 16 physical device | Expo Go, Expo SDK 56 tester app | Local Khronos `Box.glb` as direct `file:` URI | Not reliable in this smoke test |
+| iOS WKWebView | Not yet tested | Any model source | Not yet verified |
 
 ## Props
 

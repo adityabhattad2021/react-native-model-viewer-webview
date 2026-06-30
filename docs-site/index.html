@@ -59,7 +59,7 @@
             "name": "react-native-model-viewer-webview",
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "Android, iOS",
-            "softwareVersion": "0.1.0",
+            "softwareVersion": "0.2.0",
             "description": "A React Native component for rendering simple GLB and glTF previews through react-native-webview and Google's model-viewer web component.",
             "url": "https://adityabhattad2021.github.io/react-native-model-viewer-webview/",
             "downloadUrl": "https://www.npmjs.com/package/react-native-model-viewer-webview",
@@ -155,6 +155,7 @@
 
           <p>Guides</p>
           <a href="#sources">Model sources</a>
+          <a href="#compatibility">Compatibility</a>
           <a href="#events">Events and errors</a>
           <a href="#offline">Offline loading</a>
           <a href="#use-cases">Use-case ideas</a>
@@ -347,7 +348,87 @@ await model.downloadAsync();
 
 &lt;ModelViewerWebView modelSource={model} /&gt;</code></pre>
             </article>
+
+            <article>
+              <h3>Expo local GLB as data URI</h3>
+              <p>
+                On Android Expo Go, direct <code>file:</code> GLB loading was
+                not reliable in smoke testing. Reading the asset bytes and
+                passing a GLB data URI did render successfully.
+              </p>
+              <pre><code>import { Asset } from "expo-asset";
+import * as FileSystem from "expo-file-system/legacy";
+
+const model = Asset.fromModule(require("./assets/model.glb"));
+await model.downloadAsync();
+
+const localUri = model.localUri ?? model.uri;
+const base64 = await FileSystem.readAsStringAsync(localUri, {
+  encoding: FileSystem.EncodingType.Base64,
+});
+
+&lt;ModelViewerWebView
+  modelSource={`data:model/gltf-binary;base64,${base64}`}
+  style={{ height: 320 }}
+/&gt;</code></pre>
+            </article>
           </div>
+        </section>
+
+        <section id="compatibility" class="doc-section">
+          <p class="eyebrow">Compatibility</p>
+          <h2>Verified smoke tests</h2>
+          <p>
+            These are manual smoke-test results, not a blanket support matrix.
+            The Android local asset test used a bundled Khronos
+            <code>Box.glb</code>, <code>expo-asset</code>, and a GLB data URI.
+          </p>
+
+          <div class="compatibility-table" role="table" aria-label="Verified smoke tests">
+            <div role="row">
+              <strong role="columnheader">Platform</strong>
+              <strong role="columnheader">Runtime</strong>
+              <strong role="columnheader">Model source</strong>
+              <strong role="columnheader">Result</strong>
+            </div>
+            <div role="row">
+              <span role="cell">Android 16 physical device</span>
+              <span role="cell">Expo Go, Expo SDK 56 tester app</span>
+              <span role="cell">Remote GLB URL</span>
+              <span role="cell">Verified</span>
+            </div>
+            <div role="row">
+              <span role="cell">Android 16 physical device</span>
+              <span role="cell">Expo Go, Expo SDK 56 tester app</span>
+              <span role="cell">Local Khronos <code>Box.glb</code> as data URI</span>
+              <span role="cell">Verified</span>
+            </div>
+            <div role="row">
+              <span role="cell">Android 16 physical device</span>
+              <span role="cell">Expo Go, Expo SDK 56 tester app</span>
+              <span role="cell">Local Khronos <code>Box.glb</code> as direct <code>file:</code> URI</span>
+              <span role="cell">Not reliable in this smoke test</span>
+            </div>
+            <div role="row">
+              <span role="cell">iOS WKWebView</span>
+              <span role="cell">Not yet tested</span>
+              <span role="cell">Any model source</span>
+              <span role="cell">Not yet verified</span>
+            </div>
+          </div>
+
+          <figure class="smoke-test-shot">
+            <img
+              src="./assets/android-expo-go-local-glb-cropped.png"
+              alt="Android Expo Go smoke test showing model-loaded status and a local Khronos GLB rendered as a red cube"
+              loading="lazy"
+            />
+            <figcaption>
+              Android Expo Go smoke test: local Khronos <code>Box.glb</code>
+              loaded through <code>expo-asset</code>, converted to a GLB data
+              URI, and rendered by <code>ModelViewerWebView</code>.
+            </figcaption>
+          </figure>
         </section>
 
         <section id="events" class="doc-section">
@@ -481,6 +562,7 @@ cp -R node_modules/react-native-model-viewer-webview/agent-skills/react-native-m
         <a href="#install">Install</a>
         <a href="#quick-start">Quick start</a>
         <a href="#sources">Model sources</a>
+        <a href="#compatibility">Compatibility</a>
         <a href="#events">Events</a>
         <a href="#offline">Offline</a>
         <a href="#use-cases">Use cases</a>
