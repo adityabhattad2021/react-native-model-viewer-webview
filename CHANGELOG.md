@@ -5,6 +5,29 @@ All notable changes to this package should be documented here.
 This project uses semantic versioning. Versions below `1.0.0` may still change
 minor APIs when the release notes call it out clearly.
 
+## 0.2.1 - 2026-06-30
+
+This is a docs and confidence release. There are no runtime API changes.
+
+### Documentation
+
+- Add Android Expo Go smoke-test notes for remote GLB loading and local GLB
+  loading.
+- Document the local Expo asset path that worked in testing: resolve the
+  bundled `.glb`, read it as base64, and pass a
+  `data:model/gltf-binary;base64,...` URI to `ModelViewerWebView`.
+- Call out that direct Android WebView loading from a local `file:` GLB URI was
+  not reliable in this smoke test.
+- Add a verified smoke-test table to the README and compatibility docs, with
+  iOS WKWebView still marked as not yet tested.
+- Add the Android local-GLB screenshot and compatibility section to the public
+  docs site.
+
+### Maintenance
+
+- Update docs-site tests so the new local-GLB guidance and smoke-test evidence
+  stay present.
+
 ## 0.2.0 - 2026-06-02
 
 ### Added

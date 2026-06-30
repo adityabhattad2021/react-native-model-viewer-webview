@@ -104,10 +104,11 @@ test("changelog documents the current publishing release", () => {
   const packageJson = JSON.parse(readPackageFile("package.json"));
   const changelog = readPackageFile("CHANGELOG.md");
 
-  assert.equal(packageJson.version, "0.2.0");
+  assert.equal(packageJson.version, "0.2.1");
+  assert.match(changelog, /## 0\.2\.1 - 2026-06-30/);
+  assert.match(changelog, /Android Expo Go smoke-test notes/);
+  assert.match(changelog, /data:model\/gltf-binary;base64/);
   assert.match(changelog, /## 0\.2\.0 - 2026-06-02/);
-  assert.match(changelog, /offline-first/);
-  assert.match(changelog, /@google\/model-viewer` 4\.2\.0/);
   assert.match(changelog, /## 0\.1\.0 - 2026-05-31/);
   assert.match(changelog, /Initial public release/);
   assert.match(changelog, /ModelViewerWebView/);
